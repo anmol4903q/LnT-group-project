@@ -1,0 +1,356 @@
+/* Reset & base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; }
+body {
+  font-family: "Montserrat", sans-serif;
+  background: #fff8e6;
+  color: #111;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* NAVBAR */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 48px;
+  align-items: center;
+}
+.logo { font-weight: 700; font-size: 18px; }
+.topnav a {
+  margin-left: 28px;
+  color: #111;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* HERO WRAPPER: centers hero-box and places arrows outside */
+.hero-wrapper {
+  max-width: 1280px;
+  margin: 40px auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+}
+
+/* Arrows (outside the hero card) */
+.arrow {
+  background: #f5b400;
+  border: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+.arrow-left { margin-right: 18px; }
+.arrow-right { margin-left: 18px; }
+
+/* HERO BOX (fixed size, inside which slides fade) */
+.hero-box {
+  width: 100%;
+  max-width: 2000px;
+  height: 560px;
+  background: white;
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+  padding: 48px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.03);
+  display: block;
+}
+
+/* Slides stack on top of each other, only .active is visible (opacity/visibility) */
+.slide {
+  position: absolute;
+  inset: 0 0 0 0;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  padding: 40px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 420ms ease, transform 420ms ease, visibility 0ms linear 420ms;
+  
+  z-index: 5;
+}
+
+/* active slide */
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+/* Left content and right image */
+.left { width: 52%; z-index: 5; }
+.right { width: 48%; display:flex; align-items:center; justify-content:center; z-index:5; }
+
+/* yellow curvy blob behind right area */
+.hero-box::after {
+  content: "";
+  position: absolute;
+  right: -180px;
+  top: -60px;
+  width: 80%;
+  height: 140%;
+  background: #f5b400;
+  z-index: 1;
+  border-bottom-left-radius: 220px;
+  border-top-left-radius: 220px;
+  /* Slight clip to achieve notch like screenshot */
+  clip-path: ellipse(60% 80% at 100% 50%);
+  opacity: 1;
+}
+
+/* text styles (match screenshot feel) */
+.tag {
+  color: #d69000;
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.hero-title {
+  font-size: 58px;
+  line-height: 1.04;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.subtext {
+  color: #444;
+  font-size: 15px;
+  width: 86%;
+  margin-bottom: 22px;
+}
+
+/* Buttons */
+.buttons { display:flex; gap:14px; }
+.primary {
+  background: #f5b400;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.outline {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.7);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* placeholder image styling (rounded card) */
+.hero-img {
+  width: 300px;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  z-index: 6;
+  background: #e6e6e6;
+}
+
+/* Responsive tweaks */
+@media (max-width: 920px) {
+  .hero-title { font-size: 44px; }
+  .hero-box { height: auto; padding: 28px; }
+  .left { width: 100%; }
+  .right { display:none; }
+  .hero-box::after { display:none; }
+  .slide { position: relative; opacity:1; visibility:visible; transform:none; transition:none; display:block; }
+  .arrow { display:none; }
+  .hero-wrapper { padding: 0 16px; }
+}
+
+.bottom-line {
+    width: 100%;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+.bottom-line .line {
+    width: 40%;
+    margin: 0 auto;
+    height: 2px;
+    background: #222;
+    opacity: 0.3;
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+
+.bottom-line:hover .line {
+    width: 60%; /* smooth hover animation */
+}
+
+.bottom-line .quote {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #444;
+    font-style: italic;
+    letter-spacing: 0.3px;
+}
+
+/* ABOUT OVERLAY BACKDROP */
+.about-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s ease;
+  z-index: 500;
+}
+
+/* visible class */
+.about-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ABOUT BOX */
+.about-box {
+  width: 60%;
+  max-width: 700px;
+  background: white;
+  padding: 40px 46px;
+  border-radius: 18px;
+  box-shadow: 0 10px 38px rgba(0,0,0,0.12);
+  animation: fadeUp .45s ease;
+}
+
+/* fade animation */
+@keyframes fadeUp {
+  from { transform: translateY(18px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Close button */
+.about-close {
+  background: none;
+  border: none;
+  font-size: 32px;
+  font-weight: 300;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 12px;
+  color: #444;
+}
+
+/* About text styling */
+.about-box h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.about-box p {
+  color: #444;
+  line-height: 1.55;
+  margin-bottom: 14px;
+  font-size: 16px;
+}
+
+
+/* CONTACT OVERLAY BACKDROP */
+.contact-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s ease;
+  z-index: 500;
+}
+
+/* visible class */
+.contact-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* CONTACT BOX */
+.contact-box {
+  width: 55%;
+  max-width: 650px;
+  background: white;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 10px 38px rgba(0,0,0,0.12);
+  animation: fadeUp .45s ease;
+  position: relative;
+}
+
+/* TITLE */
+.contact-box h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 26px;
+}
+
+/* ROW */
+.contact-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Name label */
+.contact-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* ICONS */
+.contact-links .icon {
+  font-size: 20px;
+  margin-left: 14px;
+  color: #111;
+  text-decoration: none;
+  transition: transform .2s ease, color .2s ease;
+}
+
+.contact-links .icon:hover {
+  transform: scale(1.2);
+  color: #f5b400;
+}
+
+/* Close button */
+.contact-close {
+  background: none;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  color: #444;
+}

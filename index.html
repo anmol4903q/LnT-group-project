@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Group #7 - Portfolio Slider</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- ABOUT POPUP -->
+<div class="about-overlay" id="aboutOverlay">
+  <div class="about-box">
+    <button class="about-close" id="closeAbout">&times;</button>
+
+    <h2>About This Website</h2>
+
+    <p>
+      This website is a simple and clean portfolio project created as a part of 
+      the <strong>L&T EduTech Program</strong>. Our goal was to design a minimal and 
+      user-friendly interface using only HTML, CSS, and a little JavaScript.
+    </p>
+
+    <p>
+      The website features a sliding profile section showcasing three team members 
+      and their creative interests. Each slide highlights a different skill—UI/UX 
+      design, visual editing, and singing—showing how design and storytelling can 
+      work together in a neat layout.
+    </p>
+
+    <p>
+      We focused on clean structure, modern styling, smooth transitions, 
+      responsive layout, and aesthetic design. This project helped us learn how 
+      to build and present a webpage from scratch.
+    </p>
+  </div>
+</div>
+
+
+<!-- CONTACT POPUP -->
+<div class="contact-overlay" id="contactOverlay">
+  <div class="contact-box">
+    <button class="contact-close" id="closeContact">&times;</button>
+
+    <h2>Contact Us</h2>
+
+    <div class="contact-row">
+      <span class="contact-label">Anmol</span>
+      <span class="contact-links">
+        <a href="https://www.instagram.com/the.anmxl?igsh=MTkydGdsNWdkOXd3dg==" target="_blank" class="icon ig">📸</a>
+        <a href="https://www.linkedin.com/in/anmol-srivastava-256ab7395?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="icon li">🔗</a>
+        <a href="https://x.com/Anmol_srii4903?t=VJ4vHn6jOZuLJLEu3yBdIw&s=09" target="_blank" class="icon x">✖</a>
+      </span>
+    </div>
+
+    <div class="contact-row">
+      <span class="contact-label">Mohini</span>
+      <span class="contact-links">
+        <a href="https://instagram.com/" target="_blank" class="icon ig">📸</a>
+        <a href="https://www.linkedin.com/" target="_blank" class="icon li">🔗</a>
+        <a href="https://x.com/" target="_blank" class="icon x">✖</a>
+      </span>
+    </div>
+
+    <div class="contact-row">
+      <span class="contact-label">Kunal</span>
+      <span class="contact-links">
+        <a href="https://instagram.com/" target="_blank" class="icon ig">📸</a>
+        <a href="https://www.linkedin.com/" target="_blank" class="icon li">🔗</a>
+        <a href="https://x.com/" target="_blank" class="icon x">✖</a>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+
+
+<body>
+
+  <!-- NAVBAR (top, outside hero box) -->
+  <header class="navbar">
+    <div class="logo">Group #7</div>
+    <nav class="topnav">
+      <a href="#">About</a>
+      <a href="#">Projects</a>
+      <a href="#">Contacts</a>
+    </nav>
+  </header>
+
+  <!-- HERO WRAPPER -->
+  <main class="hero-wrapper">
+    <!-- left arrow (outside box) -->
+    <button class="arrow arrow-left" id="prevBtn" aria-label="Previous slide">&#10094;</button>
+
+    <!-- hero box (fixed) -->
+    <div class="hero-box">
+      <!-- slides (stacked, only one .slide.active visible) -->
+      <article class="slide active" data-index="0">
+        <div class="left">
+          <p class="tag">UI/UX DESIGNER</p>
+          <h1 class="hero-title">Anmol<br>Srivastava</h1>
+          <p class="subtext">
+            Anmol enjoys creating simple and visually pleasing digital experiences. He focuses on clean layouts, thoughtful color choices, and user-friendly design. He loves turning ideas into modern interfaces that feel smooth, minimal, and meaningful for the user.
+          </p>
+          <div class="buttons">
+            <button class="primary">Projects</button>
+            <button class="outline">LinkedIn</button>
+          </div>
+        </div>
+        <div class="right">
+          <img src="anmol.jpg" alt="Anmol image" class="hero-img">
+        </div>
+      </article>
+
+      <article class="slide" data-index="1">
+        <div class="left">
+          <p class="tag">ARTIST</p>
+          <h1 class="hero-title">Mohini<br>Singh</h1>
+          <p class="subtext">
+            Mohini loves crafting visuals that tell a story. She enjoys editing photos and videos with a soft, artistic touch — focusing on color, mood, and smooth transitions. Her creativity turns simple clips into expressive visuals that feel polished and emotionally rich.
+          </p>
+          <div class="buttons">
+            <button class="primary">Projects</button>
+            <button class="outline">LinkedIn</button>
+          </div>
+        </div>
+        <div class="right">
+          <img src="mohini.jpg" alt="Mohini image" class="hero-img">
+        </div>
+      </article>
+
+      <article class="slide" data-index="2">
+        <div class="left">
+          <p class="tag">App development</p>
+          <h1 class="hero-title">Kunal<br>Singh</h1>
+          <p class="subtext">
+            Kunal is passionate about building simple, functional, and user-friendly mobile apps. He enjoys turning ideas into real applications through clean code, modern UI design, and efficient problem-solving. Always curious and improving, he loves creating apps that make everyday tasks easier.
+          </p>
+          <div class="buttons">
+            <button class="primary">Projects</button>
+            <button class="outline">LinkedIn</button>
+          </div>
+        </div>
+        <div class="right">
+          <img src="kunal.jpg" alt="Kunal image" class="hero-img">
+        </div>
+      </article>
+    </div>
+
+    <!-- right arrow (outside box) -->
+    <button class="arrow arrow-right" id="nextBtn" aria-label="Next slide">&#10095;</button>
+  </main>
+
+  <!-- JS (defer to ensure DOM is ready) -->
+  <script src="script.js" defer></script>
+</body>
+</html>
+
+<footer class="bottom-line">
+    <div class="line"></div>
+    <p class="quote">“Creativity is intelligence having fun.”</p>
+</footer>
